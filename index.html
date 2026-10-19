@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <title>Onward — Your day, in order.</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>onward<span class="brand-period">.</span></a>
+    <div class="workspace-label">PERSONAL WORKSPACE</div>
+    <nav aria-label="Task views">
+      <button class="nav-item active" data-view="all" aria-current="page"><span class="nav-icon" aria-hidden="true">▦</span> All tasks <span class="nav-count" id="nav-all">0</span></button>
+      <button class="nav-item" data-view="active"><span class="nav-icon" aria-hidden="true">◷</span> In progress <span class="nav-count" id="nav-active">0</span></button>
+      <button class="nav-item" data-view="completed"><span class="nav-icon" aria-hidden="true">✓</span> Completed <span class="nav-count" id="nav-completed">0</span></button>
+    </nav>
+    <div class="sidebar-note"><div class="note-star" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 3v34M3 20h34M8 8l24 24M8 32 32 8"/></svg></div><h2>Less busy.<br>More done.</h2><p>A little intention makes<br>a lot of difference.</p><span class="note-line"></span></div>
+    <div class="profile"><span class="avatar">Y</span><div><strong>Your workspace</strong><span>One day at a time</span></div><span class="profile-dot" aria-label="Local workspace"></span></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><span>Workspace <span class="breadcrumb-slash">/</span> <strong id="breadcrumb">All tasks</strong></span><span class="private-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="6" y="10" width="12" height="10" rx="2"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>Just for you</span></header>
+    <main>
+      <section class="page-heading"><div><div class="eyebrow" id="today"></div><h1>Your day, <span>in order.</span></h1><p>Big plans start with small steps. Let’s take one.</p></div><button class="primary-button new-task-button" id="new-task"><span aria-hidden="true">+</span> New task <kbd>N</kbd></button></section>
+      <section class="overview" aria-label="Task overview">
+        <div class="stat"><span class="stat-label">On your list <span class="stat-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></span><div class="stat-number" id="total-stat">00</div><span class="stat-caption">A little clarity for your day</span></div>
+        <div class="stat"><span class="stat-label">Still to do <span class="orange-dot" aria-hidden="true"></span></span><div class="stat-number" id="active-stat">00</div><span class="stat-caption">One thing at a time</span></div>
+        <div class="stat progress-stat"><div><span class="stat-label">Made it happen</span><div class="stat-number" id="completed-stat">00</div><span class="stat-caption" id="progress-caption">Your progress starts here</span></div><div class="progress-ring" id="progress-ring" role="img" aria-label="0 percent completed"><span id="progress-percent">0<span>%</span></span></div></div>
+      </section>
+      <section class="task-panel" aria-labelledby="tasks-heading">
+        <div class="panel-heading"><h2 id="tasks-heading">The to-do list <span id="view-count">0</span></h2><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="search-input" type="search" placeholder="Find a task…" aria-label="Search tasks"></label></div>
+        <form id="task-form" class="task-form"><span class="form-plus" aria-hidden="true">+</span><label for="task-input" class="sr-only">New task</label><input id="task-input" placeholder="What needs to get done?" maxlength="240" autocomplete="off" required><label class="sr-only" for="task-category">Category</label><select id="task-category"><option>Personal</option><option>Work</option><option>Life</option></select><button class="primary-button" type="submit">Add task <span aria-hidden="true">↵</span></button></form>
+        <div class="list-toolbar"><div class="filters" role="group" aria-label="Filter tasks"><button class="filter active" data-filter="all" aria-pressed="true">All tasks</button><button class="filter" data-filter="active" aria-pressed="false">To do</button><button class="filter" data-filter="completed" aria-pressed="false">Completed</button></div><label class="sort-control"><span class="sr-only">Sort tasks</span><select id="sort-select"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="az">A to Z</option></select></label></div>
+        <ul id="task-list" aria-label="Tasks"></ul>
+        <div id="empty-state" class="empty-state"><div class="empty-art" aria-hidden="true"><span class="art-spark"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 3v34M3 20h34M8 8l24 24M8 32 32 8"/></svg></span><div class="art-paper"><i></i><i></i><i></i><span>✓</span></div><span class="art-dot"></span></div><h3>A fresh page. A clear head.</h3><p>Put that thing on your mind on your list.<br>Your first small win starts here.</p><button id="empty-add">Add your first task <span aria-hidden="true">↗</span></button></div>
+        <div class="list-footer"><span><i class="save-dot"></i><span id="save-status">Saved on this device</span></span><button id="clear-completed" disabled>Clear completed</button></div>
+      </section>
+      <footer class="page-footer"><span><span class="footer-star" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M20 3v34M3 20h34M8 8l24 24M8 32 32 8"/></svg></span> Progress over perfection.</span><span>MAKE SPACE FOR WHAT MATTERS.</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" hidden><span id="toast-text" role="status"></span><button id="undo-button">Undo</button><button id="dismiss-toast" aria-label="Dismiss notification">×</button></div>
+  <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+</body>
+</html>
