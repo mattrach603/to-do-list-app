@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My tasks</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">ONE THING AT A TIME</p><h1>My tasks</h1><p>A little space to keep your day on track.</p></header>
+    <form id="add-form">
+      <label for="title">New task</label>
+      <div class="add-row"><input id="title" name="title" placeholder="What needs doing?" required maxlength="200" autocomplete="off"><button>Add task</button></div>
+    </form>
+    <p id="error" role="alert" hidden></p>
+    <p id="summary" role="status" aria-live="polite"></p>
+    <p id="empty">Your list is clear. Add a task to get started.</p>
+    <ul id="tasks" aria-label="Tasks"></ul>
+    <footer>Saved in this browser on this device.</footer>
+  </main>
+</body>
+</html>
